@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ncit_flutter_project/forgot_password.dart';
+import 'package:ncit_flutter_project/sign_up.dart';
 
 void main() {
   runApp(const MyApp());
@@ -134,6 +135,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               Spacer(),
+
+              //https://github.com/sanamdongol/flutter_elex
               Center(
                 child: RichText(
                   text: TextSpan(
@@ -144,7 +147,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         text: "Create account",
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            print("Hello Create account");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SignUpPage(),
+                              ),
+                            );
                           },
                         style: TextStyle(
                           color: Colors.blue,
