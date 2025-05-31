@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:ncit_flutter_project/forgot_password.dart';
+import 'package:ncit_flutter_project/forgot/forgot_password.dart';
 import 'package:ncit_flutter_project/sign_up.dart';
 
 void main() {
@@ -105,6 +105,58 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text("Forgot Password?"),
                 ),
               ),
+
+              SizedBox(height: 20.0),
+              RichText(
+                text: TextSpan(
+                  text: "By continuing you agree to our ",
+                  style: TextStyle(color: Colors.black),
+                  children: [
+                    TextSpan(
+                      text: "Terms and Conditions",
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          print("object");
+                          //navigate to another page
+                          showTCBottomSheet();
+                        },
+                    ),
+                    TextSpan(text: ' and '),
+                    TextSpan(
+                      text: "Privacy and Policy",
+                      style: TextStyle(color: Colors.blue),
+                      recognizer: TapGestureRecognizer()..onTap = () {},
+                    ),
+                  ],
+                ),
+              ),
+
+              //By continuing you agree to our Terms and Condition and Privacy Policy
+
+              // RichText(
+              //   text: TextSpan(
+              //     text: 'By continuing you agree to our',
+              //     style: TextStyle(color: Colors.black),
+              //     children: [
+              //       TextSpan(
+              //         text: " Terms and Condition",
+              //         style: TextStyle(color: Colors.blue),
+              //         recognizer: TapGestureRecognizer()
+              //           ..onTap = () {
+              //             showTCBottomSheet();
+              //           },
+              //       ),
+              //       TextSpan(text: " and"),
+              //       TextSpan(
+              //         text: " Privacy and Policy",
+              //         style: TextStyle(color: Colors.blue),
+              //         recognizer: TapGestureRecognizer()..onTap = () {},
+              //       )
+              //     ],
+              //   ),
+              // ),
+
               ElevatedButton(
                 onPressed: () {},
                 child: Text('Sign in'),
@@ -136,7 +188,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Spacer(),
 
-              //https://github.com/sanamdongol/flutter_elex
               Center(
                 child: RichText(
                   text: TextSpan(
@@ -167,5 +218,65 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  void showTCBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(Icons.close),
+                ),
+              ),
+              Text(
+                "Our Terms and Conditions",
+                style: TextStyle(fontSize: 20.0),
+              ),
+              Text(
+                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
+            ],
+          ),
+        );
+      },
+    );
+
+    /*showModalBottomSheet<void>(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(25.0),
+          topRight: Radius.circular(25.0),
+        ),
+      ),
+      clipBehavior: Clip.hardEdge,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: 350,
+          color: Colors.redAccent,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text('Modal BottomSheet'),
+                ElevatedButton(
+                  child: const Text('Close BottomSheet'),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );*/
   }
 }

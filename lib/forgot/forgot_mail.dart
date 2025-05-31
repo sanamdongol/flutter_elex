@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ncit_flutter_project/forgot/reset_password.dart';
 
-class ForgotPasswordPage extends StatefulWidget {
-  String name;
-
-  ForgotPasswordPage(this.name, {super.key});
+class ForgotMailPage extends StatefulWidget {
+  const ForgotMailPage({super.key});
 
   @override
-  State<ForgotPasswordPage> createState() => _ForgotPasswordPageState();
+  State<ForgotMailPage> createState() => _ForgotMailPageState();
 }
 
-class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+class _ForgotMailPageState extends State<ForgotMailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +33,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               Text('Get paid even more'),
               SizedBox(height: 10.0),
               Text(
-                "Reset Password",
+                "Check Mail",
                 style: TextStyle(
                   color: Colors.blue,
                   fontSize: 30.0,
@@ -42,18 +41,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
               SizedBox(height: 10.0),
               Text(
-                  "Enter the email addresss we will send you the forgot password link so that you can change your password"),
-              SizedBox(height: 20.0),
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                ),
-              ),
+                  "Enter the email address we will send you the forgot password link so that you can change your password"),
+
               Spacer(),
               //SizedBox(height: 70.0),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("Login"),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResetPasswordPage(),
+                      ));
+                },
+                child: Text("Haven't received email?"),
               ),
             ],
           ),
