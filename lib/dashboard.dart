@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ncit_flutter_project/bottom_nav/cart.dart';
+import 'package:ncit_flutter_project/bottom_nav/home.dart';
+import 'package:ncit_flutter_project/bottom_nav/lesson.dart';
+import 'package:ncit_flutter_project/bottom_nav/proifle.dart';
+import 'package:ncit_flutter_project/bottom_nav/settings.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -8,9 +13,18 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  var pages = [
+    HomePage(),
+    ProfilePage(),
+    SettingsPage(),
+    CartPage(),
+    LessonPage()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.amber),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: [
@@ -27,19 +41,16 @@ class _DashboardPageState extends State<DashboardPage> {
             icon: Icon(Icons.settings),
           ),
           BottomNavigationBarItem(
-            label: 'Settings',
+            label: 'Cart',
             icon: Icon(Icons.settings),
           ),
           BottomNavigationBarItem(
-            label: 'Settings',
+            label: 'Lessons',
             icon: Icon(Icons.settings),
           ),
         ],
       ),
-      appBar: AppBar(
-        backgroundColor: Colors.amber,
-      ),
-      body: Text(" i am dashboard"),
+      body: pages[4],
     );
   }
 }
