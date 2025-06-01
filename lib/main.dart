@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:ncit_flutter_project/dashboard.dart';
+import 'package:ncit_flutter_project/demo_container.dart';
 import 'package:ncit_flutter_project/forgot/forgot_password.dart';
 import 'package:ncit_flutter_project/sign_up.dart';
 
@@ -105,7 +107,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Text("Forgot Password?"),
                 ),
               ),
-
               SizedBox(height: 20.0),
               RichText(
                 text: TextSpan(
@@ -131,34 +132,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-
-              //By continuing you agree to our Terms and Condition and Privacy Policy
-
-              // RichText(
-              //   text: TextSpan(
-              //     text: 'By continuing you agree to our',
-              //     style: TextStyle(color: Colors.black),
-              //     children: [
-              //       TextSpan(
-              //         text: " Terms and Condition",
-              //         style: TextStyle(color: Colors.blue),
-              //         recognizer: TapGestureRecognizer()
-              //           ..onTap = () {
-              //             showTCBottomSheet();
-              //           },
-              //       ),
-              //       TextSpan(text: " and"),
-              //       TextSpan(
-              //         text: " Privacy and Policy",
-              //         style: TextStyle(color: Colors.blue),
-              //         recognizer: TapGestureRecognizer()..onTap = () {},
-              //       )
-              //     ],
-              //   ),
-              // ),
-
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DashboardPage(),),
+                  );
+                },
                 child: Text('Sign in'),
               ),
               SizedBox(height: 10.0),
@@ -187,7 +167,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               Spacer(),
-
               Center(
                 child: RichText(
                   text: TextSpan(

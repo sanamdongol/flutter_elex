@@ -12,6 +12,7 @@ class ForgotPasswordPage extends StatefulWidget {
 //https://github.com/sanamdongol/flutter_elex
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
+  var _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +51,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     "Enter the email addresss we will send you the forgot password link so that you can change your password"),
                 SizedBox(height: 20.0),
                 TextFormField(
+                  controller: _passwordController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "This field can't be empty";
@@ -61,28 +63,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   ),
                 ),
 
-                // TextFormField(
-                //   validator: (value) {
-                //     if (value == null || value.isEmpty) {
-                //       return "Email can't be null";
-                //     }
-                //     return null;
-                //   },
-                //   decoration: InputDecoration(
-                //     border: OutlineInputBorder(),
-                //   ),
-                // ),
                 Spacer(),
                 //SizedBox(height: 70.0),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      /*ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Processing Data'),
-                        ),
-                      );*/
-
+                      print(_passwordController.text);
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text("Email sent"),
@@ -98,12 +84,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         ),
                       );*/
                     }
-
-                    /*  Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ForgotMailPage(),
-                        ));*/
                   },
                   child: Text("Login"),
                 ),
