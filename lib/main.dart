@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:ncit_flutter_project/dashboard.dart';
-import 'package:ncit_flutter_project/demo_container.dart';
 import 'package:ncit_flutter_project/forgot/forgot_password.dart';
 import 'package:ncit_flutter_project/sign_up.dart';
 
@@ -136,7 +135,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DashboardPage(),),
+                    MaterialPageRoute(
+                      builder: (context) => DashboardPage(),
+                    ),
                   );
                 },
                 child: Text('Sign in'),
