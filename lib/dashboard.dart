@@ -21,12 +21,59 @@ class _DashboardPageState extends State<DashboardPage> {
     LessonPage()
   ];
 
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.amber),
+      appBar: AppBar(
+        backgroundColor: Colors.amber,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.place))],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          //padding: EdgeInsets.zero,
+          children: [
+
+            // DrawerHeader(
+            //   decoration: BoxDecoration(color: Colors.blue),
+            //   child: Text('Drawer Header'),
+            // ),
+            ListTile(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfilePage(),
+                    ));
+              },
+              title: Text("Menu One"),
+              leading: Icon(Icons.home),
+              trailing: Icon(Icons.arrow_back_ios),
+            ),
+            ListTile(
+              onTap: (){
+                print("I am menu one");
+                Navigator.pop(context);
+              },
+              title: Text("Menu two"),
+              leading: Icon(Icons.home),
+              trailing: Icon(Icons.arrow_back_ios),
+            ),
+            ListTile(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              title: Text("Menu two"),
+              leading: Icon(Icons.home),
+              trailing: Icon(Icons.arrow_back_ios),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        currentIndex: selectedIndex, //add this
         items: [
           BottomNavigationBarItem(
             label: 'Home',
@@ -49,8 +96,13 @@ class _DashboardPageState extends State<DashboardPage> {
             icon: Icon(Icons.settings),
           ),
         ],
+        onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
+        },
       ),
-      body: pages[4],
+      body: pages[selectedIndex],
     );
   }
 }
